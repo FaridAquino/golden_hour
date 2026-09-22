@@ -1,0 +1,106 @@
+.lista {
+  padding-block: 2.75rem;
+}
+
+.lista + .lista {
+  border-top: 1px solid var(--hilo);
+}
+
+.portada-disco {
+  margin-bottom: 1.75rem;
+}
+
+.portada-disco__hueco {
+  width: min(300px, 100%);
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  background: #241a30;
+}
+
+.lista h2 {
+  margin-bottom: 0.5rem;
+}
+
+.lista p {
+  font-size: 0.95rem;
+}
+
+.canciones {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.cancion + .cancion {
+  border-top: 1px solid var(--hilo);
+}
+
+.cancion > a,
+.cancion > span {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding: 0.8rem 0;
+}
+
+.capullo {
+  flex: none;
+  width: 11px;
+  height: 10px;
+  fill: var(--petalo-hondo);
+  transform: translateY(1px);
+  transition: fill 0.25s ease;
+}
+
+.cancion__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.cancion__titulo {
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cancion__artista {
+  font-size: 0.85rem;
+  color: var(--papel-tenue);
+}
+
+.cancion__nota {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--papel-tenue);
+  margin-top: 0.2rem;
+}
+
+.cancion > a:hover .capullo,
+.cancion > a:focus-visible .capullo {
+  fill: var(--petalo);
+}
+
+.cancion > a:hover .cancion__titulo {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--petalo-hondo);
+}
+
+.lista__aviso {
+  font-size: 0.95rem;
+  color: var(--papel-tenue);
+  margin-top: 1.25rem;
+}
+
+.lista__aviso button {
+  font: inherit;
+  color: var(--petalo);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,174 @@
+.ramo {
+  margin: 2rem -1.5rem 0;
+}
+
+.ramo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.tulipan {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.tallo {
+  stroke: var(--tallo);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.hoja path {
+  fill: var(--hoja);
+}
+
+.hoja--tarde path {
+  fill: var(--tallo);
+  opacity: 0.85;
+}
+
+.flor {
+  filter: drop-shadow(0 3px 22px rgba(255, 201, 60, 0.24));
+}
+
+.petalo--fuera {
+  fill: var(--petalo-hondo);
+}
+
+.petalo--centro {
+  fill: var(--petalo);
+}
+
+.petalo-suelto {
+  fill: var(--petalo-hondo);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Todo lo de arriba es el estado final: sin animación la escena ya está
+   completa. El movimiento se añade solo si se acepta. */
+@media (prefers-reduced-motion: no-preference) {
+  .tallo,
+  .hoja path,
+  .petalo {
+    transform-box: fill-box;
+  }
+
+  .tallo {
+    transform-origin: 50% 100%;
+    animation: brotar 0.85s cubic-bezier(0.25, 0.8, 0.35, 1) var(--d) backwards;
+  }
+
+  .hoja path {
+    transform-origin: 100% 100%;
+    animation: desplegar 0.65s cubic-bezier(0.25, 0.8, 0.35, 1)
+      calc(var(--d) + 0.38s) backwards;
+  }
+
+  .petalo {
+    transform-origin: 50% 100%;
+  }
+
+  .petalo--fuera {
+    animation: abrir 0.8s cubic-bezier(0.22, 1.35, 0.36, 1)
+      calc(var(--d) + 0.6s) backwards;
+  }
+
+  .petalo--centro {
+    animation: abrir 0.8s cubic-bezier(0.22, 1.35, 0.36, 1)
+      calc(var(--d) + 0.76s) backwards;
+  }
+
+  .tulipan {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: mecer 9s ease-in-out calc(var(--d) + 1.8s) infinite;
+  }
+
+  .tulipan.esta-inclinado {
+    animation: asentir 1.8s cubic-bezier(0.34, 1.3, 0.5, 1);
+  }
+
+  .esta-inclinado .petalo-suelto {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: caer 1.8s cubic-bezier(0.4, 0, 0.7, 1);
+  }
+
+  .linea-suelo {
+    stroke-dasharray: 312;
+    animation: trazar 1s ease-out backwards;
+  }
+}
+
+@keyframes brotar {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes desplegar {
+  from {
+    transform: scale(0.1) rotate(-10deg);
+  }
+}
+
+@keyframes abrir {
+  from {
+    transform: scale(0.06);
+  }
+}
+
+@keyframes mecer {
+  0%,
+  100% {
+    transform: rotate(-1.1deg);
+  }
+  50% {
+    transform: rotate(1.1deg);
+  }
+}
+
+@keyframes asentir {
+  0% {
+    transform: rotate(0deg);
+  }
+  22% {
+    transform: rotate(9deg);
+  }
+  55% {
+    transform: rotate(-3deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes caer {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(3px, 6px) rotate(24deg);
+  }
+  85% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(16px, var(--caida)) rotate(190deg);
+  }
+}
+
+@keyframes trazar {
+  from {
+    stroke-dashoffset: 312;
+  }
+}

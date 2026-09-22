@@ -1,0 +1,9 @@
+.pie {
+  padding-block: 2.5rem 3.5rem;
+}
+
+.pie p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--papel-tenue);
+}

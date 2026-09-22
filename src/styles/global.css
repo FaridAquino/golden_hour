@@ -1,0 +1,127 @@
+:root {
+  /* Cielo de la hora dorada */
+  --noche: #2b1b3a;
+  --horizonte: #6e3f52;
+  --brasa: #9a5a4a;
+
+  /* Tulipanes */
+  --petalo: #ffc93c;
+  --petalo-hondo: #e09b1e;
+  --petalo-luz: #ffe08a;
+  --tallo: #6f8f63;
+  --hoja: #5c7b53;
+
+  --papel: #f7efe4;
+  --papel-tenue: rgba(247, 239, 228, 0.62);
+  --hilo: rgba(247, 239, 228, 0.14);
+
+  --col: 27rem;
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --texto: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--texto);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--papel);
+  background: var(--noche);
+  background-image: linear-gradient(
+    176deg,
+    #241531 0%,
+    var(--noche) 32%,
+    #4a2b45 68%,
+    var(--horizonte) 88%,
+    var(--brasa) 100%
+  );
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* La columna: el ancho de un teléfono, aunque se abra en desktop */
+.col {
+  width: 100%;
+  max-width: var(--col);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+h1,
+h2 {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: 'SOFT' 40, 'WONK' 1;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: clamp(3rem, 17.5vw, 4.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 34ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tenue {
+  color: var(--papel-tenue);
+}
+
+.fecha {
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  color: var(--papel-tenue);
+  margin-bottom: 1.25rem;
+}
+
+.hilo {
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background: linear-gradient(90deg, var(--hilo), transparent);
+}
+
+/* Foco visible sobre fondo oscuro */
+:focus-visible {
+  outline: 2px solid var(--petalo);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

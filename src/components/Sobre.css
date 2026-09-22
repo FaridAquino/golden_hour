@@ -1,0 +1,236 @@
+/* El sobre se monta sobre el cielo que ya pinta el body: no lleva fondo
+   propio, así al desvanecerse no hay costura con la página. */
+.sobre {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.sobre__boton {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sobre__dibujo {
+  display: block;
+  width: min(74vw, 320px);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.35));
+}
+
+.sobre__papel {
+  fill: #f7efe4;
+}
+
+.sobre__solapa {
+  fill: #e4d7c4;
+}
+
+.sobre__leyenda {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 29px;
+  fill: #9c8469;
+}
+
+.banda {
+  fill: var(--petalo-hondo);
+}
+
+.lazo__vuelta {
+  fill: var(--petalo);
+}
+
+.lazo__cola {
+  fill: var(--petalo-hondo);
+}
+
+.lazo__nudo {
+  fill: #d18f16;
+}
+
+.brote {
+  opacity: 0;
+}
+
+.brote__petalo {
+  fill: var(--petalo-hondo);
+}
+
+.brote__petalo--centro {
+  fill: var(--petalo);
+}
+
+.sobre__pista {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--papel-tenue);
+  transition: opacity 0.3s ease;
+}
+
+.sobre.se-abre {
+  pointer-events: none;
+}
+
+.sobre.se-abre .sobre__pista {
+  opacity: 0;
+}
+
+/* Todo lo de arriba es el sobre quieto y cerrado. El movimiento se añade
+   solo si se acepta; sin él, el sobre sigue abriéndose, pero de golpe. */
+@media (prefers-reduced-motion: no-preference) {
+  .sobre__boton {
+    animation: vibrar 3.4s ease-in-out 0.8s infinite;
+  }
+
+  .sobre.se-abre .sobre__boton {
+    animation: none;
+  }
+
+  .banda,
+  .lazo,
+  .sobre__solapa,
+  .brote {
+    transform-box: fill-box;
+  }
+
+  .lazo {
+    transform-origin: 50% 50%;
+  }
+
+  .banda--izq {
+    transform-origin: 100% 50%;
+  }
+
+  .banda--der {
+    transform-origin: 0% 50%;
+  }
+
+  .sobre__solapa {
+    transform-origin: 50% 0%;
+  }
+
+  .brote {
+    transform-origin: 50% 100%;
+  }
+
+  .sobre.se-abre .lazo {
+    animation: desatar 0.42s cubic-bezier(0.4, 0, 0.7, 1) forwards;
+  }
+
+  .sobre.se-abre .banda--izq {
+    animation: soltar-izq 0.55s cubic-bezier(0.4, 0, 0.6, 1) 0.16s forwards;
+  }
+
+  .sobre.se-abre .banda--der {
+    animation: soltar-der 0.55s cubic-bezier(0.4, 0, 0.6, 1) 0.16s forwards;
+  }
+
+  .sobre.se-abre .sobre__solapa {
+    animation: abatir 0.5s cubic-bezier(0.34, 1.3, 0.5, 1) 0.38s forwards;
+  }
+
+  .sobre.se-abre .brote {
+    animation: brotar-fuera 1.15s cubic-bezier(0.2, 0.7, 0.3, 1)
+      calc(0.65s + var(--d)) both;
+  }
+
+  .sobre.se-abre {
+    animation: sobre-fuera 0.62s ease-in 1.25s forwards;
+  }
+}
+
+/* Tiembla en tandas cortas: dos segundos quieto y una sacudida. */
+@keyframes vibrar {
+  0%,
+  60%,
+  76%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  61.5% {
+    transform: translate(-5px, 2px) rotate(-1.8deg);
+  }
+  63.5% {
+    transform: translate(5px, -2px) rotate(1.8deg);
+  }
+  65.5% {
+    transform: translate(-4px, 2px) rotate(-1.4deg);
+  }
+  67.5% {
+    transform: translate(4px, -2px) rotate(1.4deg);
+  }
+  69.5% {
+    transform: translate(-3px, 1px) rotate(-0.9deg);
+  }
+  71.5% {
+    transform: translate(3px, -1px) rotate(0.9deg);
+  }
+  73.5% {
+    transform: translate(-1.5px, 0.5px) rotate(-0.4deg);
+  }
+}
+
+@keyframes desatar {
+  to {
+    transform: scale(0.05) rotate(-32deg);
+    opacity: 0;
+  }
+}
+
+@keyframes soltar-izq {
+  to {
+    transform: translateX(-210px) rotate(-9deg);
+    opacity: 0;
+  }
+}
+
+@keyframes soltar-der {
+  to {
+    transform: translateX(210px) rotate(9deg);
+    opacity: 0;
+  }
+}
+
+@keyframes abatir {
+  to {
+    transform: scaleY(-0.58);
+  }
+}
+
+@keyframes brotar-fuera {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.15);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(calc(var(--x) * 0.62), calc(var(--y) * 1.12))
+      rotate(calc(var(--r) * 0.6)) scale(var(--s));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s));
+    opacity: 0;
+  }
+}
+
+@keyframes sobre-fuera {
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}

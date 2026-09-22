@@ -1,0 +1,73 @@
+.pagina {
+  min-height: 100svh;
+  padding-top: max(2.5rem, env(safe-area-inset-top));
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.portada h1 span {
+  display: block;
+}
+
+/* La segunda línea entra desplazada: la palabra se abre como la flor.
+   El amarillo se reserva para los tulipanes. */
+.portada__eco {
+  margin-left: 0.5em;
+}
+
+.dedicatoria {
+  margin-top: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+.dedicatoria span {
+  display: block;
+}
+
+.dedicatoria span:first-child {
+  color: var(--papel-tenue);
+}
+
+.hoy {
+  padding-block: 3rem 2.5rem;
+}
+
+.hoy h2 {
+  margin-bottom: 0.85rem;
+}
+
+.hoy p {
+  font-size: 0.975rem;
+}
+
+.hoy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portada .fecha,
+  .portada h1 span,
+  .dedicatoria {
+    animation: asomar 0.9s ease-out backwards;
+  }
+
+  .portada .fecha {
+    animation-delay: 0.05s;
+  }
+  .portada h1 span:first-child {
+    animation-delay: 0.18s;
+  }
+  .portada__eco {
+    animation-delay: 0.3s;
+  }
+  .dedicatoria {
+    animation-delay: 2.1s;
+  }
+}
+
+@keyframes asomar {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}

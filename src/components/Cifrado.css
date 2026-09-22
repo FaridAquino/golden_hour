@@ -1,0 +1,149 @@
+.cifrado {
+  padding-block: 2.5rem 3rem;
+}
+
+.cifrado h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cifrado > p {
+  font-size: 0.95rem;
+}
+
+/* Monoespaciada por necesidad: los diales no pueden cambiar de ancho
+   mientras giran. */
+.cifrado__texto {
+  margin: 1.75rem 0 2rem;
+  max-width: none;
+  font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', Menlo, Consolas,
+    monospace;
+  font-size: clamp(0.85rem, 3.7vw, 1rem);
+  line-height: 2;
+}
+
+.cifrado__palabra {
+  display: inline-block;
+  margin-right: 1ch;
+}
+
+.cifrado__letra {
+  display: inline-block;
+  width: 1ch;
+  text-align: center;
+  color: var(--papel-tenue);
+  opacity: 0.8;
+}
+
+.cifrado__letra.esta-fija {
+  color: var(--papel);
+  opacity: 1;
+  animation: encajar 0.45s ease-out;
+}
+
+@keyframes encajar {
+  0% {
+    color: var(--petalo);
+    transform: translateY(-2px);
+  }
+}
+
+.cifrado__forma label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--papel-tenue);
+  margin-bottom: 0.5rem;
+}
+
+.cifrado__fila {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.cifrado__fila input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--papel);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hilo);
+  border-radius: 0;
+  padding: 0.5rem 0;
+  transition: border-color 0.25s ease;
+}
+
+.cifrado__fila input:focus {
+  outline: 0;
+  border-bottom-color: var(--petalo);
+}
+
+.cifrado__fila button {
+  flex: none;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--papel);
+  background: rgba(247, 239, 228, 0.13);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.25s ease;
+}
+
+.cifrado__fila button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cifrado__fila button:hover:not(:disabled) {
+    background: rgba(247, 239, 228, 0.21);
+  }
+}
+
+.cifrado__fila button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.cifrado__pista,
+.cifrado__fallo {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+}
+
+.cifrado__pista {
+  color: var(--papel-tenue);
+}
+
+.cifrado__fallo {
+  color: var(--petalo);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cifrado__forma.no-encaja .cifrado__fila {
+    animation: trabar 0.4s ease;
+  }
+}
+
+@keyframes trabar {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  45% {
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+}
