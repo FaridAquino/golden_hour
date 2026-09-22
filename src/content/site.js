@@ -2,36 +2,33 @@
 export const site = {
   fecha: '21 de setiembre',
   titulo: ['flores', 'amarillas'],
-  dedicatoria: ['Hoy se regalan flores amarillas.', 'Estas son para ti.'],
+  dedicatoria: ['Hoy se regalan cosas amarillas :b a mi me dieron una inca kola', 'Estas son para ti.'],
 
   // La puerta de entrada: el sobre cerrado.
   sobre: {
-    leyenda: 'para ti',
-    pista: 'Toca para abrir',
+    leyenda: 'Para Ti :b',
+    pista: 'Ábrelo',
   },
 
   hoy: {
-    titulo: 'por qué hoy',
+    titulo: '¿por qué hoy?',
     parrafos: [
-      'El 21 de setiembre se celebra la llegada de la primavera, y desde hace unos años la costumbre viene con flores amarillas: se le regalan a quien uno quiere, sin más motivo que el día.',
-      'Estos tulipanes no se marchitan. Tócalos.',
+      'Porque no, digo yó, es la respuesta mas simple',
+      'La verdad tenía planeado algo presencial perooo hubo inconvenientes...',
     ],
   },
 
-  // El candado. No cifra nada de verdad: el mensaje está en el código.
   cifrado: {
     titulo: 'un mensaje',
-    intro: 'Está cerrado. Escribe la palabra y los diales giran.',
-    etiqueta: 'la palabra',
+    intro: 'Está cifrado. Escribe la palabra y se revelará por arte de magia 👻',
+    etiqueta: 'Aquí ingresa la palabra (todo en minúscula)',
     boton: 'Abrir',
-    pista: '',
-    clave: 'hola',
+    pista: 'Una pista: 🐈😺',
+    clave: 'gato',
     mensaje:
       'Hoy vi el cielo amarillo, desperté con el faro amarillo, y si no fuera por el color de mi sangre, mi corazón también sería amarillo',
   },
 
-  // Cada lista lee su CSV y su canción desde public/musica/, y su portada
-  // desde public/imagenes/.
   listas: [
     {
       titulo: 'para el día',
@@ -59,5 +56,5 @@ export const site = {
     },
   ],
 
-  pie: 'Un ramo que no se marchita.',
+  pie: 'Gracias por abrir este sobre. Espero que te haya gustado. :b',
 }
