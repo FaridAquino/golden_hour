@@ -21,9 +21,9 @@ export const site = {
   cifrado: {
     titulo: 'un mensaje',
     intro: 'Está cifrado. Escribe la palabra y se revelará por arte de magia 👻',
-    etiqueta: 'Aquí ingresa la palabra (todo en minúscula)',
+    etiqueta: 'Aquí ingresa la palabra (todo en minúscula y singular)',
     boton: 'Abrir',
-    pista: 'Una pista: 🐈😺',
+    pista: 'Una pista: Lo peor son los 200 pinchasos',
     clave: 'gato',
     mensaje:
       'Hoy vi el cielo amarillo, desperté con el faro amarillo, y si no fuera por el color de mi sangre, mi corazón también sería amarillo',
