@@ -71,3 +71,51 @@
     transform: translateY(0.5rem);
   }
 }
+
+/* El botón que lleva a la segunda página (/glow/). */
+.seguir {
+  padding-block: 2.5rem 0.5rem;
+}
+
+.seguir__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(247, 239, 228, 0.13);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.25s ease;
+}
+
+.seguir__boton svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+
+.seguir__boton:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .seguir__boton:hover {
+    background: rgba(247, 239, 228, 0.21);
+  }
+
+  .seguir__boton:hover svg {
+    transform: translateX(3px);
+  }
+}

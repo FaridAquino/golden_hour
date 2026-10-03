@@ -1,0 +1,27 @@
+/* Parte dos: un bosque al atardecer. Verde de pino arriba, musgo al medio
+   y el mismo dorado de la hora dorada asomando abajo. */
+:root {
+  --pino: #13261d;
+  --bosque: #1e3a2c;
+  --musgo: #3f5a3a;
+  --oliva: #6d7448;
+  --dorado: #c08b45;
+  --papel-tenue: rgba(240, 236, 220, 0.66);
+}
+
+body {
+  background-color: var(--pino);
+  background-image: linear-gradient(
+    176deg,
+    #0e1d16 0%,
+    var(--pino) 26%,
+    var(--bosque) 52%,
+    var(--musgo) 76%,
+    var(--oliva) 91%,
+    var(--dorado) 100%
+  );
+}
+
+:focus-visible {
+  outline-color: var(--dorado);
+}

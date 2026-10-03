@@ -67,6 +67,19 @@ export default function App() {
             {site.listas.map((lista) => (
               <Playlist key={lista.archivo} {...lista} />
             ))}
+
+            <div className="col">
+              <hr className="hilo" />
+            </div>
+
+            <nav className="seguir col">
+              <a className="seguir__boton" href={`${import.meta.env.BASE_URL}glow/`}>
+                {site.seguir}
+                <svg viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M4 9h10M10 5l4 4-4 4" />
+                </svg>
+              </a>
+            </nav>
           </main>
 
           <Footer />
