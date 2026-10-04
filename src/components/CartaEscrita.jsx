@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { TegakiRenderer, taperPlugin } from 'tegaki'
-import parisienne from 'tegaki/fonts/parisienne'
+import { TegakiRenderer } from 'tegaki'
+import caveat from 'tegaki/fonts/caveat'
 import PaperCrumple from './PaperCrumple'
 import './CartaEscrita.css'
 
@@ -14,8 +14,6 @@ const PAPEL = '#f7efe4'
 // cuando PaperCrumple la usa como textura.
 const NITIDEZ = 3
 
-// Estilo pluma: los trazos se afinan al entrar y al levantar la plumilla.
-const PLUMA = [taperPlugin({ startLength: 0.12, endLength: 0.3 })]
 // Tamaño de letra en % del ancho de la hoja: se parte de LETRA y se achica
 // hasta que el texto quepa, sin bajar de LETRA_MIN.
 const LETRA = 8
@@ -40,7 +38,7 @@ function fotografiar(hoja) {
   return foto.toDataURL('image/png')
 }
 
-export default function CartaEscrita({ texto, tinta = '#1c2b3a', velocidad = 1, pausa = 900, pista }) {
+export default function CartaEscrita({ texto, tinta = '#22382b', velocidad = 1, pausa = 900, pista }) {
   const escenaRef = useRef(null)
   const hojaRef = useRef(null)
   const textoRef = useRef(null)
@@ -107,9 +105,7 @@ export default function CartaEscrita({ texto, tinta = '#1c2b3a', velocidad = 1, 
               <TegakiRenderer
                 ref={textoRef}
                 className="carta__texto"
-                font={parisienne}
-                plugins={PLUMA}
-                pressure={1}
+                font={caveat}
                 // Tegaki dibuja con más resolución que la pantalla para que la foto salga nítida.
                 quality={{ pixelRatio: NITIDEZ / (window.devicePixelRatio || 1), smoothing: true }}
                 time={{ mode: 'uncontrolled', speed: velocidad }}

@@ -16,7 +16,7 @@ export default function PaginaDos() {
 
       <main>
         {parte2.estrofas.map((estrofa, i) => (
-          <CartaEscrita key={i} texto={estrofa} velocidad={8} pista={i === 0 ? parte2.pista : undefined} />
+          <CartaEscrita key={i} texto={estrofa} velocidad={5} pista={i === 0 ? parte2.pista : undefined} />
         ))}
       </main>
     </div>
